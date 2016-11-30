@@ -20,6 +20,16 @@ router.get ('/', function (request, response){
 
 });
 
+// About route
+router.get ('/about', function (request, response) {
+    response.render ('about');
+});
+
+// Contacts route
+router.get ('/contact', function (request, response) {
+    response.render ('contact');
+});
+
 // Export the router from this file that is seen
 // by NodeJs as it's own module.
 module.exports = router;
