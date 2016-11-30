@@ -25,6 +25,10 @@ var methodOverride = require ('method-override');
 
 // Let express know that we are overriding the HTTP method
 // and using the method sent in the form data.
+//server.use (methodOverride ('X-HTTP-Method-Override'));
+//server.use (methodOverride ('_method'));
+// need to create our own custom function
+// - it may have been removed from express 4.0
 server.use (methodOverride (function (request, response) {
     // Grab the request information and check to see
     // if the HTTP method was sent down as an _method value.
@@ -100,6 +104,7 @@ var port = 3000;
 var handlebars = require ('express-handlebars');
 server.engine ('.hbs', handlebars({
     layoutsDir: 'templates',                // The directory of layout files.
+    //partialsDir: '/templates/partials',      // The directory for partial files.
     defaultLayout: 'index',                 // The base/main template to always load.
     extname: '.hbs'                         // The file extension to use.
 }));
@@ -119,7 +124,7 @@ var mongoClient = require ('mongodb').MongoClient;
 global.db;
 
 // Create a connection to the database.
-mongoClient.connect ('mongodb://localhost:27017/chaz', function (error, database) {
+mongoClient.connect ('mongodb://localhost:27017/sample_database', function (error, database) {
     // Check if there was an error connecting to the database.
     if (error) {
         console.error('*** ERROR: Unable to connect to the mongo database.');
@@ -155,6 +160,17 @@ var basicRoutes = require ('./routes/basic.js');
 // Set our server to use the basic routes.
 server.use ('/', basicRoutes);
 
+// Connect the post routes.
+var postRoutes = require ('./routes/posts.js');
+server.use ('/post', postRoutes);
+
+// Connect the user routes.
+var userRoutes = require ('./routes/user.js');
+server.use ('/user', userRoutes);
+
+// Connect the product routes.
+var productRoutes = require ('./routes/product.js');
+server.use ('/product', productRoutes);
 
 // Test a database query.
 server.get ('/test', function (request, response) {
@@ -163,11 +179,10 @@ server.get ('/test', function (request, response) {
     //db.collection ('users').find ().toArray (function (error, result) {
     //    console.log ('This is the result of the query: ', result);
     //});
-
-    db.collection ('users').findOne ({ username: 'kim'}, {},
+    db.collection ('users').findOne ({ username: 'ronbravo'}, {},
     function (error, result) {
         console.log ('This is the result of the query: ', result);
-    }); // *** WORKS!
+    });
 
     response.send ('db test was run');
 });
@@ -179,7 +194,7 @@ server.get ('/test', function (request, response) {
 var mongoose = require ('mongoose');
 
 // Connect mongoose to the mongodb server.
-mongoose.connect ('mongodb://localhost:27017/chaz');
+mongoose.connect ('mongodb://localhost:27017/sample_database');
 
 // Set the mongoose promise library to use.
 mongoose.Promise = require('bluebird');
