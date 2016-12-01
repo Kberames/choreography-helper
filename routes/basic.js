@@ -25,9 +25,19 @@ router.get ('/about', function (request, response) {
     response.render ('about');
 });
 
-// Contacts route
+// Contact route
 router.get ('/contact', function (request, response) {
     response.render ('contact');
+});
+
+// Login route
+router.get ('/login', function (request, response) {
+    response.render ('login');
+});
+
+// Register route
+router.get ('/register', function (request, response) {
+    response.render ('register');
 });
 
 // Export the router from this file that is seen

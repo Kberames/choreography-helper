@@ -141,7 +141,6 @@ mongoClient.connect ('mongodb://localhost:27017/chaz', function (error, database
                 console.log (' - The server has successfully started on port: ' + port)
             }
         });
-
     }
 });
 
@@ -155,6 +154,9 @@ var basicRoutes = require ('./routes/basic.js');
 // Set our server to use the basic routes.
 server.use ('/', basicRoutes);
 
+// Connect the user routes.
+var userRoutes = require ('./routes/user.js');
+server.use ('/user', userRoutes);
 
 // Test a database query.
 server.get ('/test', function (request, response) {
