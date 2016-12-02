@@ -25,7 +25,8 @@
 
         </script>
     </head>
-    <body>
+    <body ng-app="App">
+
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
@@ -42,11 +43,20 @@
             </div>
         </nav>
 
-        <h1>Choreography Helper</h1>
+        <h1>Choreography Helper Angular</h1>
 
         <!-- Set an area of the page where the partials
         html content will be inserted. -->
-        {{{body}}}
+        <div ui-view></div>
 
+        <!-- Load all my app scripts -->
+        <script src="/lib/angular/angular.js"></script>
+        <script src="/lib/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="/lib/angular-bootstrap/ui-bootstrap.js"></script>
+
+        <script src="/angular/js/app.js"></script>
+        <script src="/angular/js/ChazController.js"></script>
+        <script src="/angular/js/MediaService.js"></script>
+        <script src="/angular/js/MediaController.js"></script>
     </body>
 </html>

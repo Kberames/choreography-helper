@@ -1,0 +1,12 @@
+<!-- List out the post objects -->
+<ul>
+
+    <li ng-repeat="release in mediaController.releaseList">
+        <div class="release">
+            <div>
+                <strong>Release:</strong> {{ release.program }}{{ release.number }}
+                <strong>Date:</strong> Q{{ release.quarter }} {{ release.year }}
+            </div>
+        </div>
+    </li>
+</ul>

@@ -40,6 +40,15 @@ router.get ('/register', function (request, response) {
     response.render ('register');
 });
 
+// Angular route
+router.get ('/chaz', function (request, response) {
+    // response.send ('chaz route test');
+    response.render ('home', {
+        //  Override the default index.hbs and use the index.
+        layout: 'index-angular'
+    });
+});
+
 // Export the router from this file that is seen
 // by NodeJs as it's own module.
 module.exports = router;

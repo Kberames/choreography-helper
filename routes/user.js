@@ -52,7 +52,7 @@ router.post ('/login', function (request, response) {
                 };
                 console.log ('This is the session data: ', request.session);
 
-                response.redirect ('/test');
+                response.redirect ('/chaz/#/');
             }
             else {
                 // Problem with login credentials
