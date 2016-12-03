@@ -18,7 +18,6 @@ namespace App {
 
             return promise;
         }
-
     }
 
     let app = angular.module ('App');

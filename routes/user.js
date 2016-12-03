@@ -48,11 +48,21 @@ router.post ('/login', function (request, response) {
 
                 request.session.user = {  // save only the necessary user info
                     username: result.username,
-                    email: result.email
+                    email: result.email,
+                    access: result.access
                 };
                 console.log ('This is the session data: ', request.session);
 
-                response.redirect ('/chaz/#/');
+                if (result.access == 'super') {
+                    response.redirect ('/chaz/#/');  // need to create super user route
+                }
+                else if (result.access == 'admin') {
+                    response.redirect ('/chaz/#/media');  // admin route
+                }
+                else {
+                    response.redirect ('/chaz/#/'); // need to create playlist route
+                }
+
             }
             else {
                 // Problem with login credentials
