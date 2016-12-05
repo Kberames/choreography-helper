@@ -7,8 +7,7 @@ namespace App {
         private mediaService;
 
         public releaseList;
-
-        public releaseObject;
+        public currentRelease;
 
         constructor (
             $http: angular.IHttpService,
@@ -19,7 +18,7 @@ namespace App {
             this.stateService = $state;
             this.mediaService = mediaService;
 
-            this.releaseObject = {};
+            // this.releaseObject = {};
 
             // console.log ('- test: ', this.stateService);
 
@@ -39,6 +38,28 @@ namespace App {
                 .error ((response) => {
                     console.error ('There was an error with the getReleaseList.');
                 })
+        }
+
+        public getRelease (id) {
+            console.log ('inside getRelease');
+            this.mediaService.getRelease(id)
+            .success ((response) => {
+                console.log ('Test data: ', response);
+                // this.postList = response;
+                this.currentRelease = response [0];
+            })
+            .error ((response) => {
+            });
+        }
+
+        public editRelease (releaseId) {
+            console.log ('release id: ' + releaseId);
+
+            this.stateService.go ('release',
+                {
+                    id: releaseId
+                }
+            );
         }
 
         public test () {

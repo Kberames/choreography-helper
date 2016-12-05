@@ -1,7 +1,7 @@
 <div class="">
-    <button type="submit" class="btn btn-primary">New Release</button>
+<button class="btn btn-primary" href="#">New Release</button>
 </div></br>
-<!-- List out the post objects -->
+<!-- List out the release objects -->
 <table class="table table-striped table-bordered table-hover table-condensed">
     <thead>
       <tr>
@@ -11,8 +11,12 @@
     </thead>
     <tbody>
         <tr ng-repeat="release in mediaController.releaseList">
-            <td>{{ release.program }}{{ release.number }}</td>
+            <td><a href="#" ng-click="mediaController.editRelease(release._id)">{{ release.program }}{{ release.number }}</a></td>
             <td>Q{{ release.quarter }} {{ release.year }}</td>
+<!--
+            <td><button ng-click="mediaController.editRelease ({{release._id}})" class="btn">Edit Release</button>
+            </td>
+-->
         </tr>
     </tbody>
 </table>

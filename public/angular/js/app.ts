@@ -19,6 +19,15 @@ namespace App {
                 controller: App.MediaController,
                 controllerAs: 'mediaController'
             })
+            .state ('release', {
+                url: '/media/release',
+                templateUrl: '/angular/templates/release.html',
+                controller: App.ReleaseController,
+                controllerAs: 'releaseController',
+                    params: {
+                      id: null
+                    }
+            })
             ;
         }
     ]);

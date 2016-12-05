@@ -6,16 +6,17 @@ var Schema = mongoose.Schema;
 
 // Create a schema for the Track.
 var trackSchema = new Schema ({
-    program : String,
-    number : Number,
-    quarter : Number,
-    year : Number,
-    sizzler : String,
-    numBonus : Number,
-    track1 : String,
-    track2 : String,
-    numPresenters : Number,
-    presenter1 : String
+    type : String,
+    songTitle : String,
+    artist : String,
+    length : String,
+    exercises : String,
+    lyrics : String,
+    searchTags : String,
+
+    // Set an array of presenter objects to be
+    // linked or referenced by the Track schema.
+    presenters: [{ type: Schema.Types.ObjectId, ref: 'Presenter'}]
 });
 
 // Create the Track model object.

@@ -12,7 +12,7 @@ var presenterSchema = new Schema ({
     webPage : String});
 
 // Create the Presenter model object.
-var Presenter = mongoose.model ('Presenter', trackSchema);
+var Presenter = mongoose.model ('Presenter', presenterSchema);
 
 // Make my Presenter object available to other nodejs modules.
 module.exports = Presenter;

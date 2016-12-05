@@ -18,6 +18,20 @@ namespace App {
 
             return promise;
         }
+
+        public getRelease (id) {
+
+            let promise = this.httpService ({
+                url: '/media',
+                method: 'GET',
+                params: {
+                    id: id
+                }
+            });
+
+            return promise;
+        }
+
     }
 
     let app = angular.module ('App');
