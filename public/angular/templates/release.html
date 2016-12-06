@@ -6,13 +6,13 @@
     <label for="program">Program: </label>
     <input name="program" type="text" class="form-control" ng-model="releaseController.release.program">
     <label for="number">Number: </label>
-    <input name="number" type="number" min="1" max="150" class="form-control" value="{{ releaseController.release.number }}">
+    <input name="number" type="number" min="1" max="150" class="form-control" ng-model="releaseController.release.number">
     <label for="quarter">Quarter: </label>
-    <input name="quarter" type="number"  min="1" max="4" class="form-control" value="{{ releaseController.release.quarter }}">
+    <input name="quarter" type="number"  min="1" max="4" class="form-control" ng-model="releaseController.release.quarter">
     <label for="year">Year: </label>
-    <input name="year" type="number"  min="1990" max="2017" class="form-control" value="{{ releaseController.release.year }}">
+    <input name="year" type="number"  min="1990" max="2017" class="form-control" ng-model="releaseController.release.year">
     <label for="sizzler">Sizzler: </label>
-    <textarea name="sizzler" class="form-control">{{ releaseController.release.sizzler }}</textarea></br>
+    <textarea name="sizzler" class="form-control" ng-model="releaseController.release.sizzler"></textarea></br>
 
     <button class="btn btn-primary" type="submit">Save Release</button>
 </form>

@@ -15,12 +15,6 @@ var Presenter = require ('../model/presenter.js');
 // Route to view my releases.
 router.get ('/', function (request, response) {
     // response.send ('This is where we list releases.');
-    // response.json ([
-    //     {program : "BODYPUMP"},
-    //     {program : "RPM"},
-    //     {program : "CXWORX"}
-    //
-    // ]);
 
     Release.find ({}, function (error, result){
         if (error) {
@@ -122,7 +116,7 @@ router.put ('/presenter/:id', function (request, response) {
 
     console.log('request body: ', request.body);
 
-    Release.findByIdAndUpdate (
+    Presenter.findByIdAndUpdate (
         // id to search by
         presenterId,
 

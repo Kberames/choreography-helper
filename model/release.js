@@ -7,9 +7,9 @@ var Schema = mongoose.Schema;
 // Create a schema for the Release.
 var releaseSchema = new Schema ({
     program : String,
-    number : String,
-    quarter : String,
-    year : String,
+    number : Number,
+    quarter : Number,
+    year : Number,
     sizzler : String,
     // ,
     // // Set an array of track objects to be
