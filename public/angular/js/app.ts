@@ -28,6 +28,15 @@ namespace App {
                       id: null
                     }
             })
+            .state ('presenter', {
+                url: '/media/presenter',
+                templateUrl: '/angular/templates/presenter.html',
+                controller: App.PresenterController,
+                controllerAs: 'presenterController',
+                    params: {
+                      id: null
+                    }
+            })
             ;
         }
     ]);

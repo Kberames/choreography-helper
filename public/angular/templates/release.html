@@ -32,7 +32,7 @@
 <!-- Render presenters if any exist -->
 <div class="panel panel-default" ng-repeat="presenter in releaseController.release.presenters">
     <div class="panel-body">
-        <a href="#">{{ presenter.name }}</a>
+        <a href="#" ng-click="releaseController.editPresenter(presenter._id)">{{ presenter.name }}</a>
         <p>{{ presenter.title }}</p>
         <p>{{ presenter.location }}</p>
         <p>{{ presenter.webPage }}</p>

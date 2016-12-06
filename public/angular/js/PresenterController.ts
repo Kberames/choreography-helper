@@ -1,11 +1,11 @@
 namespace App {
-    export class ReleaseController {
+    export class PresenterController {
         static $inject = ['$http', '$state'];
 
         private httpService;
         private stateService;
 
-        public release;
+        public presenter;
 
         constructor (
             $http: angular.IHttpService,
@@ -16,46 +16,35 @@ namespace App {
 
             console.log ('Passed parameters: ', this.stateService.params);
             this.httpService ({
-              url: '/media/release/' + this.stateService.params.id,
+              url: '/media/presenter/' + this.stateService.params.id,
               method: 'GET'
             })
             .success ((response) => {
               console.log (response);
-              this.release = response;
+              this.presenter = response;
             })
             .error (() => {
             })
         }
 
-        public saveRelease () {
-            console.log ('release save method fired for release: ' + this.stateService.params.id);
+        public savePresenter () {
+            console.log ('presenter save method fired for presenter: ' + this.stateService.params.id);
 
             let updateID = this.stateService.params.id;
 
             this.httpService ({
                 // Need to include media the path.
-                url: '/media/release/' + updateID,
+                url: '/media/presenter/' + updateID,
                 method: 'PUT',
-                data: this.release
+                data: this.presenter
             })
             .success ((response) => {
-                console.log ('Release was saved.');
+                console.log ('Presenter was saved.');
                 this.stateService.go ('media');
             })
             .error (() => {
             })
 
         }
-
-        public editPresenter (presenterId) {
-            console.log ('presenter id: ' + presenterId);
-
-            this.stateService.go ('presenter',
-                {
-                    id: presenterId
-                }
-            );
-        }
-
     }
 }

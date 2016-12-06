@@ -1,40 +1,17 @@
-<h2>{{ releaseController.release.program }}{{ releaseController.release.number }}</h2>
+<h2>{{ presenterController.presenter.name }}</h2>
 
 
-<form ng-submit = "releaseController.saveRelease ()" class="form-group" enctype="application/x-www-form-urlencoded">
+<form ng-submit = "presenterController.savePresenter ()" class="form-group" enctype="application/x-www-form-urlencoded">
 
-    <label for="program">Program: </label>
-    <input name="program" type="text" class="form-control" ng-model="releaseController.release.program">
-    <label for="number">Number: </label>
-    <input name="number" type="number" min="1" max="150" class="form-control" value="{{ releaseController.release.number }}">
-    <label for="quarter">Quarter: </label>
-    <input name="quarter" type="number"  min="1" max="4" class="form-control" value="{{ releaseController.release.quarter }}">
-    <label for="year">Year: </label>
-    <input name="year" type="number"  min="1990" max="2017" class="form-control" value="{{ releaseController.release.year }}">
-    <label for="sizzler">Sizzler: </label>
-    <textarea name="sizzler" class="form-control">{{ releaseController.release.sizzler }}</textarea></br>
+    <label for="name">Name: </label>
+    <input name="name" type="text" class="form-control" ng-model="presenterController.presenter.name">
+    <label for="title">Title: </label>
+    <input name="title" type="text" class="form-control" ng-model="presenterController.presenter.title">
+    <label for="location">Location: </label>
+    <input name="location" type="text" class="form-control" ng-model="presenterController.presenter.location">
+    <label for="webPage">Web Page: </label>
+    <input name="webPage" type="text" class="form-control" ng-model="presenterController.presenter.webPage">
+    </br>
 
-    <button class="btn btn-primary" type="submit">Save Release</button>
+    <button class="btn btn-primary" type="submit">Save Presenter</button>
 </form>
-
-<h3>Tracks</h3>
-<!-- Render tracks if any exist -->
-<div class="panel panel-default" ng-repeat="track in releaseController.release.tracks">
-    <div class="panel-body">
-        <a href="#">{{ track.type }}</a>
-        <p>{{ track.songTitle }}</p>
-        <p>{{ track.artist }}</p>
-        <p>{{ track.length }}</p>
-    </div>
-</div>
-
-<h3>Presenters</h3>
-<!-- Render presenters if any exist -->
-<div class="panel panel-default" ng-repeat="presenter in releaseController.release.presenters">
-    <div class="panel-body">
-        <a href="#">{{ presenter.name }}</a>
-        <p>{{ presenter.title }}</p>
-        <p>{{ presenter.location }}</p>
-        <p>{{ presenter.webPage }}</p>
-    </div>
-</div>
