@@ -1,11 +1,11 @@
 namespace App {
-    export class ReleaseController {
+    export class TrackController {
         static $inject = ['$http', '$state'];
 
         private httpService;
         private stateService;
 
-        public release;
+        public track;
 
         constructor (
             $http: angular.IHttpService,
@@ -16,56 +16,35 @@ namespace App {
 
             console.log ('Passed parameters: ', this.stateService.params);
             this.httpService ({
-              url: '/media/release/' + this.stateService.params.id,
+              url: '/media/track/' + this.stateService.params.id,
               method: 'GET'
             })
             .success ((response) => {
               console.log (response);
-              this.release = response;
+              this.track = response;
             })
             .error (() => {
             })
         }
 
-        public saveRelease () {
-            console.log ('release save method fired for release: ' + this.stateService.params.id);
+        public saveTrack () {
+            console.log ('track save method fired for track: ' + this.stateService.params.id);
 
             let updateID = this.stateService.params.id;
 
             this.httpService ({
                 // Need to include media the path.
-                url: '/media/release/' + updateID,
+                url: '/media/track/' + updateID,
                 method: 'PUT',
-                data: this.release
+                data: this.track
             })
             .success ((response) => {
-                console.log ('Release was saved.');
+                console.log ('Track was saved.');
                 this.stateService.go ('media');
             })
             .error (() => {
             })
 
         }
-
-        public editPresenter (presenterId) {
-            console.log ('presenter id: ' + presenterId);
-
-            this.stateService.go ('presenter',
-                {
-                    id: presenterId
-                }
-            );
-        }
-
-        public editTrack (trackId) {
-            console.log ('track id: ' + trackId);
-
-            this.stateService.go ('track',
-                {
-                    id: trackId
-                }
-            );
-        }
-
     }
 }

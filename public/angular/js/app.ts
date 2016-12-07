@@ -37,6 +37,15 @@ namespace App {
                       id: null
                     }
             })
+            .state ('track', {
+                url: '/media/track',
+                templateUrl: '/angular/templates/track.html',
+                controller: App.TrackController,
+                controllerAs: 'trackController',
+                    params: {
+                      id: null
+                    }
+            })
             ;
         }
     ]);

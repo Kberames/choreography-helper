@@ -94,7 +94,7 @@ server.use (function (request, response, next) {
 })
 
 // Set the port that our server will run on.
-var port = 3001;
+var port = 3000;
 
 // Configure the render engine handlebars.
 var handlebars = require ('express-handlebars');

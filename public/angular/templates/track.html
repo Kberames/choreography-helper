@@ -1,0 +1,21 @@
+<h2>{{ trackController.track.type }}</h2>
+
+
+<form ng-submit = "trackController.saveTrack ()" class="form-group" enctype="application/x-www-form-urlencoded">
+
+    <label for="songTitle">Song Title: </label>
+    <input name="songTitle" type="text" class="form-control" ng-model="trackController.track.songTitle">
+    <label for="artist">Location: </label>
+    <input name="artist" type="text" class="form-control" ng-model="trackController.track.artist">
+    <label for="length">Length: </label>
+    <input name="length" type="text" class="form-control" ng-model="trackController.track.length">
+    <label for="exercises">Exercises: </label>
+    <input name="exercises" type="text" class="form-control" ng-model="trackController.track.exercises">
+    <label for="lyrics">Lyrics: </label>
+    <input name="lyrics" type="text" class="form-control" ng-model="trackController.track.lyrics">
+    <label for="searchTags">Search Tags: </label>
+    <input name="searchTags" type="text" class="form-control" ng-model="trackController.track.searchTags">
+    </br>
+
+    <button class="btn btn-primary" type="submit">Save Track</button>
+</form>

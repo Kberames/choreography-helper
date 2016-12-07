@@ -97,7 +97,7 @@ router.get ('/presenter/:id', function (request, response) {
     // release.
     Presenter.findById(presenterId, function (error, result) {
         if (error) {
-            var errorMessage = 'Unable to load release.';
+            var errorMessage = 'Unable to load presenter.';
             console.error ('*** ERROR: ' + errorMessage);
             response.send (errorMessage);
         }
@@ -133,6 +133,57 @@ router.put ('/presenter/:id', function (request, response) {
             else {
                     response.json ({
                         message: 'Presenter was updated.'});
+            }
+        }
+    );
+});
+
+// Route to grab a specific track by their id.
+router.get ('/track/:id', function (request, response) {
+    // Grab the release id by the ':id' value in the url path.
+    var trackId = request.params.id;
+    console.log('inside get track by id');
+
+    // Use the mongoose query builder to grab the
+    // release.
+    Track.findById(trackId, function (error, result) {
+        if (error) {
+            var errorMessage = 'Unable to load track.';
+            console.error ('*** ERROR: ' + errorMessage);
+            response.send (errorMessage);
+        }
+        else {
+            console.log('Track findOne: ' + result);
+            response.json (result);
+        }
+    });
+});
+
+// Create a route to handle updating an existing track.
+router.put ('/track/:id', function (request, response) {
+    var trackId = request.params.id;
+
+    console.log('trackId to update: ' + request.params.id);
+
+    console.log('request body: ', request.body);
+
+    Track.findByIdAndUpdate (
+        // id to search by
+        trackId,
+
+        // What needs to be udpdated.
+        request.body,
+
+        // Callback function.
+        function (error, result) {
+            if (error) {
+                var errorMessage = 'Unable to save track.';
+                console.error ('*** ERROR: ' + errorMessage);
+                response.send (errorMessage);
+            }
+            else {
+                    response.json ({
+                        message: 'Track was updated.'});
             }
         }
     );

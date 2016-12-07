@@ -21,7 +21,7 @@
 <!-- Render tracks if any exist -->
 <div class="panel panel-default" ng-repeat="track in releaseController.release.tracks">
     <div class="panel-body">
-        <a href="#">{{ track.type }}</a>
+        <a href="#" ng-click="releaseController.editTrack(track._id)">{{ track.type }}</a>
         <p>{{ track.songTitle }}</p>
         <p>{{ track.artist }}</p>
         <p>{{ track.length }}</p>
