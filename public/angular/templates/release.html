@@ -18,6 +18,9 @@
 </form>
 
 <h3>Tracks</h3>
+<div class="">
+    <a class="btn btn-primary" ng-click="releaseController.editTrack(-1)">Add New Track</a>
+</div></br>
 <!-- Render tracks if any exist -->
 <div class="panel panel-default" ng-repeat="track in releaseController.release.tracks">
     <div class="panel-body">
