@@ -14,6 +14,8 @@ var trackSchema = new Schema ({
     lyrics : String,
     searchTags : String,
 
+    release: { type: Schema.Types.ObjectId, ref: 'Release'},
+
     // Set an array of presenter objects to be
     // linked or referenced by the Track schema.
     presenters: [{ type: Schema.Types.ObjectId, ref: 'Presenter'}]

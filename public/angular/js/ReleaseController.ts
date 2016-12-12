@@ -57,12 +57,26 @@ namespace App {
             );
         }
 
-        public editTrack (trackId) {
+        public editTrack (trackId, releaseId) {
             console.log ('track id: ' + trackId);
+            console.log ('release id: ' + releaseId);
 
             this.stateService.go ('track',
                 {
-                    id: trackId
+                    id: trackId,
+                    rel: releaseId
+                }
+            );
+        }
+
+        public addTrack (releaseId) {
+            console.log ('addTrack release id: ' + releaseId);
+
+            this.stateService.go ('track',
+                {
+                    id: -1,
+                    // rel: '5840967c24054afa20934b2d'
+                    rel: releaseId
                 }
             );
         }

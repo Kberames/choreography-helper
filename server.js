@@ -49,7 +49,6 @@ server.use (methodOverride (function (request, response) {
     }
 }));
 
-
 // Load in the express session handler.
 var session = require ('express-session');
 

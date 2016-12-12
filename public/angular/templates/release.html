@@ -1,5 +1,7 @@
 <h2>{{ releaseController.release.program }}{{ releaseController.release.number }}</h2>
 
+<p>{{ releaseController.release._id }}</p>
+
 
 <form ng-submit = "releaseController.saveRelease ()" class="form-group" enctype="application/x-www-form-urlencoded">
 
@@ -19,12 +21,13 @@
 
 <h3>Tracks</h3>
 <div class="">
-    <a class="btn btn-primary" ng-click="releaseController.editTrack(-1)">Add New Track</a>
+    <!-- <a class="btn btn-primary" ng-click="releaseController.addTrack({{releaseController.release._id}})">Add New Track</a> -->
+    <a class="btn btn-primary" ng-click="releaseController.addTrack(releaseController.release._id)">Add New Track</a>
 </div></br>
 <!-- Render tracks if any exist -->
 <div class="panel panel-default" ng-repeat="track in releaseController.release.tracks">
     <div class="panel-body">
-        <a href="#" ng-click="releaseController.editTrack(track._id)">{{ track.type }}</a>
+        <a href="#" ng-click="releaseController.editTrack(track._id, release._id)">{{ track.type }}</a>
         <p>{{ track.songTitle }}</p>
         <p>{{ track.artist }}</p>
         <p>{{ track.length }}</p>

@@ -43,7 +43,8 @@ namespace App {
                 controller: App.TrackController,
                 controllerAs: 'trackController',
                     params: {
-                      id: null
+                      id: null,
+                      rel: null
                     }
             })
             ;
