@@ -23,6 +23,17 @@
             <strong>Search Tags:</strong> {{trackController.track.searchTags}}
         </div>
     </div>
+</div><br>
+<h3>Presenter(s)</h3>
+</br>
+<!-- Render presenters if any exist -->
+<div class="panel panel-default" ng-repeat="presenter in trackController.track.presenters">
+    <div class="panel-body">
+        <a href="#" ng-click="trackController.viewPresenter(presenter._id)">{{ presenter.name }}</a>
+        <p>{{ presenter.title }}</p>
+        <p>{{ presenter.location }}</p>
+        <p>{{ presenter.webPage }}</p>
+    </div>
 </div>
 </br></br>
 

@@ -66,17 +66,21 @@ var Track = require ('../model/track.js');
 
         // Use the mongoose query builder to grab the
         // release.
-        Track.findById(trackId, function (error, result) {
-            if (error) {
-                var errorMessage = 'Unable to load track.';
-                console.error ('*** ERROR: ' + errorMessage);
-                response.send (errorMessage);
-            }
-            else {
-                console.log('Track findOne: ' + result);
-                response.json (result);
-            }
-        });
+        Track.findById(trackId)
+        .populate({
+            path: 'presenters',
+        })
+            .exec (function (error, result) {
+                if (error) {
+                    var errorMessage = 'Unable to load track.';
+                    console.error ('*** ERROR: ' + errorMessage);
+                    response.send (errorMessage);
+                }
+                else {
+                    console.log('Track findOne: ' + result);
+                    response.json (result);
+                }
+            });
     });
 
     // Create a route to handle updating an existing track.

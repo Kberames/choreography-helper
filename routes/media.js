@@ -90,60 +90,6 @@ var Presenter = require ('../model/presenter.js');
         );
     });
 
-// //******************************
-// // PRESENTER routes.
-// //******************************
-//     // Route to grab a specific presenter by their id.
-//     router.get ('/presenter/:id', function (request, response) {
-//         // Grab the release id by the ':id' value in the url path.
-//         var presenterId = request.params.id;
-//         console.log('inside get presenter by id');
-//
-//         // Use the mongoose query builder to grab the
-//         // release.
-//         Presenter.findById(presenterId, function (error, result) {
-//             if (error) {
-//                 var errorMessage = 'Unable to load presenter.';
-//                 console.error ('*** ERROR: ' + errorMessage);
-//                 response.send (errorMessage);
-//             }
-//             else {
-//                 console.log('Release findOne: ' + result);
-//                 response.json (result);
-//             }
-//         });
-//     });
-//
-//     // Create a route to handle updating an existing presenter.
-//     router.put ('/presenter/:id', function (request, response) {
-//         var presenterId = request.params.id;
-//
-//         console.log('presenterId to update: ' + request.params.id);
-//
-//         console.log('request body: ', request.body);
-//
-//         Presenter.findByIdAndUpdate (
-//             // id to search by
-//             presenterId,
-//
-//             // What needs to be udpdated.
-//             request.body,
-//
-//             // Callback function.
-//             function (error, result) {
-//                 if (error) {
-//                     var errorMessage = 'Unable to save presenter.';
-//                     console.error ('*** ERROR: ' + errorMessage);
-//                     response.send (errorMessage);
-//                 }
-//                 else {
-//                         response.json ({
-//                             message: 'Presenter was updated.'});
-//                 }
-//             }
-//         );
-//     });
-
 // Route to test.
 router.get ('/test', function (request, response) {
     console.log("Testing Media Routes");   response.send ("Testing Media Routes");

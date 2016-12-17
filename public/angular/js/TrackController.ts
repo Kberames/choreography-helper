@@ -96,6 +96,16 @@ namespace App {
                 ;
         }
 
+        public viewPresenter (presenterId) {
+            console.log ('*** TrackController view presenter id: ' + presenterId);
+
+            this.stateService.go ('presenter-view',
+                {
+                    id: presenterId
+                }
+            );
+        }
+
         public goToPage (route, data){
             this.stateService.go (route, data);
         }
