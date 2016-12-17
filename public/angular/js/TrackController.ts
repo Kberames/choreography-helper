@@ -28,27 +28,8 @@ namespace App {
 
                 this.track = {
                     release: this.stateService.params.releaseId
-                    } 
+                    }
             }
-
-            // if (this.stateService.params) {
-            //     console.log ('*** parameters passed into track constructor: ', this.stateService.params);
-            //
-            //     this.httpService ({
-            //         url: '/media/' + this.stateService.params.rel + '/track/' + this.stateService.params.id,
-            //         // url: '/media/track/' + this.stateService.params.id,
-            //          method: 'GET'
-            //     })
-            //     .success ((response) => {
-            //         console.log ('response: ', response);
-            //         this.track = response;
-            //     })
-            //     .error (() => {
-            //     })
-            // }
-            // else {
-            //     console.log ('creating new track - inside track constructor');
-            // }
         }
 
         public read (id) {
@@ -76,12 +57,12 @@ namespace App {
             if (this.track._id) {
                 updateID = this.track._id;
                 method = 'PUT';
-                url = '/media/track/' + updateID;
+                url = '/track/' + updateID;
             }
             else {
                 updateID = -1;
                 method = 'POST';
-                url = '/media/track';
+                url = '/track';
             }
 
             // console.log ('updateID: ' + updateID);

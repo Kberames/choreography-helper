@@ -161,6 +161,10 @@ server.use ('/user', userRoutes);
 var mediaRoutes = require ('./routes/media.js');
 server.use ('/media', mediaRoutes);
 
+// Connect the release routes.
+var trackRoutes = require ('./routes/track.js');
+server.use ('/track', trackRoutes);
+
 // Test a database query.
 server.get ('/test', function (request, response) {
 

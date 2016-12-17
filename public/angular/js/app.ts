@@ -38,7 +38,7 @@ namespace App {
                     }
             })
             .state ('track-create', {
-                url: '/media/track/create/:releaseId',
+                url: '/track/create/:releaseId',
                 templateUrl: '/angular/templates/track/track-edit.html',
                 controller: App.TrackController,
                 controllerAs: 'trackController'
@@ -48,27 +48,16 @@ namespace App {
                     }
             })
             .state ('track-view', {
-                url: '/media/track/:id',
+                url: '/track/:id',
                 templateUrl: '/angular/templates/track/track-view.html',
                 controller: App.TrackController,
                 controllerAs: 'trackController'
-                // ,
-                //     params: {
-                //       id: null,
-                //       rel: null
-                //     }
             })
             .state ('track-edit', {
-                // url: '/media/track/:releaseId/:id',
-                url: '/media/track/:id',
+                url: '/track/:id',
                 templateUrl: '/angular/templates/track/track-edit.html',
                 controller: App.TrackController,
                 controllerAs: 'trackController'
-                // ,
-                //     params: {
-                //       id: null,
-                //       rel: null
-                //     }
             })
             ;
         }

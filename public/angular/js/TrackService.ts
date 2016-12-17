@@ -44,7 +44,7 @@ namespace App {
 
         public delete (id) {
             let promise = this.httpService ({
-                url: '/media/track/' + id + '/delete',
+                url: '/track/' + id + '/delete',
                 method: 'GET',
                 data: {},
                 headers: {
@@ -57,7 +57,7 @@ namespace App {
 
 
         public read (id) {
-            let url = '/media/track';
+            let url = '/track';
 
 
             if (id) {
