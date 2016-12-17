@@ -38,15 +38,14 @@ namespace App {
                     }
             })
             .state ('track-create', {
-                url: '/media/track/create',
+                url: '/media/track/create/:releaseId',
                 templateUrl: '/angular/templates/track/track-edit.html',
                 controller: App.TrackController,
                 controllerAs: 'trackController'
-                // ,
-                //     params: {
-                //       id: null,
-                //       rel: null
-                //     }
+                ,
+                    params: {
+                      releaseId: null
+                    }
             })
             .state ('track-view', {
                 url: '/media/track/:id',

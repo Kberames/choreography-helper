@@ -76,11 +76,10 @@ namespace App {
         public createTrack (releaseId) {
             console.log ('createTrack release id: ' + releaseId);
 
-            this.stateService.go ('track-edit',
+            this.stateService.go ('track-create',
                 {
                     // rel: '5840967c24054afa20934b2d',
-                    rel: releaseId,
-                    id: -1
+                    releaseId: releaseId
                 }
             );
         }

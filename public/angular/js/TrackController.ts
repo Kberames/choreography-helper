@@ -24,6 +24,13 @@ namespace App {
                 this.read (this.stateService.params.id);
             }
 
+            if (this.stateService.params.releaseId) {
+
+                this.track = {
+                    release: this.stateService.params.releaseId
+                    } 
+            }
+
             // if (this.stateService.params) {
             //     console.log ('*** parameters passed into track constructor: ', this.stateService.params);
             //
