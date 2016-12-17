@@ -1,0 +1,17 @@
+<h2>{{ presenterController.presenter.name }}</h2>
+
+
+<form ng-submit = "presenterController.savePresenter ()" class="form-group" enctype="application/x-www-form-urlencoded">
+
+    <label for="name">Name: </label>
+    <input name="name" type="text" class="form-control" ng-model="presenterController.presenter.name">
+    <label for="title">Title: </label>
+    <input name="title" type="text" class="form-control" ng-model="presenterController.presenter.title">
+    <label for="location">Location: </label>
+    <input name="location" type="text" class="form-control" ng-model="presenterController.presenter.location">
+    <label for="webPage">Web Page: </label>
+    <input name="webPage" type="text" class="form-control" ng-model="presenterController.presenter.webPage">
+    </br>
+
+    <button class="btn btn-primary" type="submit">Save Presenter</button>
+</form>

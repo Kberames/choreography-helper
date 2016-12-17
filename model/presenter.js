@@ -9,7 +9,10 @@ var presenterSchema = new Schema ({
     name : String,
     title : String,
     location : String,
-    webPage : String});
+    webPage : String,
+
+    release: { type: Schema.Types.ObjectId, ref: 'Release'}
+});
 
 // Create the Presenter model object.
 var Presenter = mongoose.model ('Presenter', presenterSchema);

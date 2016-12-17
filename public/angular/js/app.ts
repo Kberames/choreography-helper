@@ -28,15 +28,6 @@ namespace App {
                       id: null
                     }
             })
-            .state ('presenter', {
-                url: '/media/presenter',
-                templateUrl: '/angular/templates/presenter.html',
-                controller: App.PresenterController,
-                controllerAs: 'presenterController',
-                    params: {
-                      id: null
-                    }
-            })
             .state ('track-create', {
                 url: '/track/create/:releaseId',
                 templateUrl: '/angular/templates/track/track-edit.html',
@@ -58,6 +49,28 @@ namespace App {
                 templateUrl: '/angular/templates/track/track-edit.html',
                 controller: App.TrackController,
                 controllerAs: 'trackController'
+            })
+            .state ('presenter-create', {
+                url: '/presenter/create/:releaseId',
+                templateUrl: '/angular/templates/presenter/presenter-edit.html',
+                controller: App.PresenterController,
+                controllerAs: 'presenterController'
+                ,
+                    params: {
+                      releaseId: null
+                    }
+            })
+            .state ('presenter-view', {
+                url: '/presenter/:id',
+                templateUrl: '/angular/templates/presenter/presenter-view.html',
+                controller: App.PresenterController,
+                controllerAs: 'presenterController'
+            })
+            .state ('presenter-edit', {
+                url: '/presenter/:id',
+                templateUrl: '/angular/templates/presenter/presenter-edit.html',
+                controller: App.PresenterController,
+                controllerAs: 'presenterController'
             })
             ;
         }

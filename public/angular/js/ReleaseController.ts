@@ -53,16 +53,6 @@ namespace App {
 
         }
 
-        public editPresenter (presenterId) {
-            console.log ('presenter id: ' + presenterId);
-
-            this.stateService.go ('presenter',
-                {
-                    id: presenterId
-                }
-            );
-        }
-
         public viewTrack (trackId) {
             console.log ('*** ReleaseController view track id: ' + trackId);
 
@@ -77,6 +67,27 @@ namespace App {
             console.log ('createTrack release id: ' + releaseId);
 
             this.stateService.go ('track-create',
+                {
+                    // rel: '5840967c24054afa20934b2d',
+                    releaseId: releaseId
+                }
+            );
+        }
+
+        public viewPresenter (presenterId) {
+            console.log ('*** ReleaseController view presenter id: ' + presenterId);
+
+            this.stateService.go ('presenter-view',
+                {
+                    id: presenterId
+                }
+            );
+        }
+
+        public createPresenter (releaseId) {
+            console.log ('createPresenter release id: ' + releaseId);
+
+            this.stateService.go ('presenter-create',
                 {
                     // rel: '5840967c24054afa20934b2d',
                     releaseId: releaseId

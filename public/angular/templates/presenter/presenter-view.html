@@ -1,0 +1,24 @@
+<h2>{{ presenterController.presenter.type }}</h2>
+
+<p>PRESENTER ID: {{presenterController.presenter._id}}</p>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div>
+            <strong>Name:</strong> {{presenterController.presenter.name}}
+        </div>
+        <div>
+            <strong>Title:</strong> {{presenterController.presenter.title}}
+        </div>
+        <div>
+            <strong>Location:</strong> {{presenterController.presenter.location}}
+        </div>
+        <div>
+            <strong>Web Page:</strong> {{presenterController.presenter.webPage}}
+        </div>
+    </div>
+</div>
+</br></br>
+
+<a class="btn btn-primary" ng-click="presenterController.goToPage('presenter-edit', {id: presenterController.presenter._id})">Edit</a>
+<a class="btn btn-primary" ng-click="presenterController.delete(presenterController.presenter._id, presenterController.presenter.release)">Delete</a>
