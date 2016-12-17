@@ -37,15 +37,39 @@ namespace App {
                       id: null
                     }
             })
-            .state ('track', {
-                url: '/media/track',
-                templateUrl: '/angular/templates/track.html',
+            .state ('track-create', {
+                url: '/media/track/create',
+                templateUrl: '/angular/templates/track/track-edit.html',
                 controller: App.TrackController,
-                controllerAs: 'trackController',
-                    params: {
-                      id: null,
-                      rel: null
-                    }
+                controllerAs: 'trackController'
+                // ,
+                //     params: {
+                //       id: null,
+                //       rel: null
+                //     }
+            })
+            .state ('track-view', {
+                url: '/media/track/:id',
+                templateUrl: '/angular/templates/track/track-view.html',
+                controller: App.TrackController,
+                controllerAs: 'trackController'
+                // ,
+                //     params: {
+                //       id: null,
+                //       rel: null
+                //     }
+            })
+            .state ('track-edit', {
+                // url: '/media/track/:releaseId/:id',
+                url: '/media/track/:id',
+                templateUrl: '/angular/templates/track/track-edit.html',
+                controller: App.TrackController,
+                controllerAs: 'trackController'
+                // ,
+                //     params: {
+                //       id: null,
+                //       rel: null
+                //     }
             })
             ;
         }

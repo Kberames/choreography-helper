@@ -1,20 +1,26 @@
 namespace App {
     export class ReleaseController {
-        static $inject = ['$http', '$state'];
+        static $inject = ['$http', '$state', 'TrackService'];
 
         private httpService;
         private stateService;
+        private trackService;
 
         public release;
+        public releaseList;
+        public mode;
+
 
         constructor (
             $http: angular.IHttpService,
             $state: angular.ui.IState,
+            trackService: App.TrackService
         ) {
             this.httpService = $http;
             this.stateService = $state;
+            this.trackService = trackService;
 
-            console.log ('Passed parameters: ', this.stateService.params);
+            console.log ('*** ReleaseController - Passed parameters: ', this.stateService.params);
             this.httpService ({
               url: '/media/release/' + this.stateService.params.id,
               method: 'GET'
@@ -57,26 +63,24 @@ namespace App {
             );
         }
 
-        public editTrack (trackId, releaseId) {
-            console.log ('track id: ' + trackId);
-            console.log ('release id: ' + releaseId);
+        public viewTrack (trackId) {
+            console.log ('*** ReleaseController view track id: ' + trackId);
 
-            this.stateService.go ('track',
+            this.stateService.go ('track-view',
                 {
-                    id: trackId,
-                    rel: releaseId
+                    id: trackId
                 }
             );
         }
 
-        public addTrack (releaseId) {
-            console.log ('addTrack release id: ' + releaseId);
+        public createTrack (releaseId) {
+            console.log ('createTrack release id: ' + releaseId);
 
-            this.stateService.go ('track',
+            this.stateService.go ('track-edit',
                 {
-                    id: -1,
-                    // rel: '5840967c24054afa20934b2d'
-                    rel: releaseId
+                    // rel: '5840967c24054afa20934b2d',
+                    rel: releaseId,
+                    id: -1
                 }
             );
         }

@@ -1,0 +1,30 @@
+<h2>{{ trackController.track.type }}</h2>
+
+<p>TRACK ID: {{trackController.track._id}}</p>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div>
+            <strong>Song Title:</strong> {{trackController.track.songTitle}}
+        </div>
+        <div>
+            <strong>Artist:</strong> {{trackController.track.artist}}
+        </div>
+        <div>
+            <strong>Length:</strong> {{trackController.track.length}}
+        </div>
+        <div>
+            <strong>Exercises:</strong> {{trackController.track.exercises}}
+        </div>
+        <div>
+            <strong>Lyrics:</strong> {{trackController.track.lyrics}}
+        </div>
+        <div>
+            <strong>Search Tags:</strong> {{trackController.track.searchTags}}
+        </div>
+    </div>
+</div>
+</br></br>
+
+<a class="btn btn-primary" ng-click="trackController.goToPage('track-edit', {id: trackController.track._id})">Edit</a>
+<a class="btn btn-primary" ng-click="trackController.delete(trackController.track._id, trackController.track.release)">Delete</a>

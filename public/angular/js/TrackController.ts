@@ -1,37 +1,63 @@
 namespace App {
     export class TrackController {
-        static $inject = ['$http', '$state'];
+        static $inject = ['$http', '$state', 'TrackService'];
 
         private httpService;
         private stateService;
+        private trackService;
 
         public track;
+        public list;
 
         constructor (
             $http: angular.IHttpService,
             $state: angular.ui.IState,
+            trackService: App.TrackService
         ) {
             this.httpService = $http;
             this.stateService = $state;
+            this.trackService = trackService;
 
-            if (this.stateService.params) {
-                console.log ('*** parameters passed into track constructor: ', this.stateService.params);
+            console.log ('*** parameters passed into track constructor: ', this.stateService.params);
 
-                this.httpService ({
-                    url: '/media/' + this.stateService.params.rel + '/track/' + this.stateService.params.id,
-                    // url: '/media/track/' + this.stateService.params.id,
-                     method: 'GET'
-                })
+            if (this.stateService.params.id) {
+                this.read (this.stateService.params.id);
+            }
+
+            // if (this.stateService.params) {
+            //     console.log ('*** parameters passed into track constructor: ', this.stateService.params);
+            //
+            //     this.httpService ({
+            //         url: '/media/' + this.stateService.params.rel + '/track/' + this.stateService.params.id,
+            //         // url: '/media/track/' + this.stateService.params.id,
+            //          method: 'GET'
+            //     })
+            //     .success ((response) => {
+            //         console.log ('response: ', response);
+            //         this.track = response;
+            //     })
+            //     .error (() => {
+            //     })
+            // }
+            // else {
+            //     console.log ('creating new track - inside track constructor');
+            // }
+        }
+
+        public read (id) {
+            this.trackService.read (id)
                 .success ((response) => {
-                    console.log ('response: ', response);
-                    this.track = response;
+                    if (id) {
+                        this.track = response;
+                    }
+                    else {
+                        this.list = response;
+
+                    }
                 })
-                .error (() => {
-                })
-            }
-            else {
-                console.log ('creating new track - inside track constructor');
-            }
+                .error ((response) => {
+                    console.error ('Unable to read tracks: ', response);
+                });
         }
 
         public saveTrack () {
@@ -67,6 +93,23 @@ namespace App {
             .error (() => {
             })
 
+        }
+
+        public delete (id, release){
+            console.log ('Delete track id:', id);
+            console.log ('Delete track, release id:', release);
+            this.trackService.delete (id)
+                .success ((response) => {
+                    this.goToPage ('release', {id: release});
+                })
+                .error ((response) => {
+                    console.error ('Unable to delete the track: ', response);
+                })
+                ;
+        }
+
+        public goToPage (route, data){
+            this.stateService.go (route, data);
         }
     }
 }

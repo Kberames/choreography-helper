@@ -206,16 +206,16 @@ var Presenter = require ('../model/presenter.js');
         var trackId = request.params.id;
         // var releaseId = request.params.rel;
 
-        // console.log('inside get track by id, releaseId:' + releaseId);
+        console.log('inside get track by id, releaseId:' + releaseId);
         console.log('request.PARAMS: ', request.params);
 
-        // if (trackId == -1) {
-        //     console.log('NEW BLANK Track');
-        //     response.json ({
-        //         release: releaseId
-        //     });
-        // }
-        // else {
+        if (trackId == -1) {
+            console.log('NEW BLANK Track');
+            response.json ({
+                release: releaseId
+            });
+        }
+        else {
             // Use the mongoose query builder to grab the
             // release.
             Track.findById(trackId, function (error, result) {
@@ -229,7 +229,7 @@ var Presenter = require ('../model/presenter.js');
                     response.json (result);
                 }
             });
-        // }
+        }
     });
 
     // Create a route to handle updating an existing track.
@@ -286,30 +286,6 @@ var Presenter = require ('../model/presenter.js');
     //         }
     //     });
     // });
-
-    //Create a route to delete a track by id.
-    router.get ('/track/:id/delete', function (request, response) {
-        var trackId = request.params.id;
-
-        Track.findByIdAndRemove (trackId, function (error, result) {
-            if (error) {
-                var errorMessage = 'Unable to delete track: ' + trackId;
-                console.error ('***ERROR: ' + errorMessage);
-                response.send (errorMessage);
-            }
-            else {
-                if (request.sendJson) {
-                    response.json ({
-                        message: 'Track was deleted.'
-                    });
-                }
-                else {
-                    response.redirect ('/media');
-                }
-            }
-        });
-        // response.send ('Order was deleted');
-    });
 
 // Route to test.
 router.get ('/test', function (request, response) {
