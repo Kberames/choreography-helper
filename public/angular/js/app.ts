@@ -1,5 +1,5 @@
 namespace App {
-    let app = angular.module ('App', ['ui.router', 'ui.bootstrap']);
+    let app = angular.module ('App', ['ui.router', 'ui.bootstrap', 'pdf']);
 
 
     app.config ([
@@ -13,20 +13,37 @@ namespace App {
                 controller: App.ChazController,
                 controllerAs: 'chazController'
             })
-            .state ('media', {
-                url: '/media',
-                templateUrl: '/angular/templates/media.html',
-                controller: App.MediaController,
-                controllerAs: 'mediaController'
-            })
             .state ('release', {
-                url: '/media/release',
-                templateUrl: '/angular/templates/release.html',
+                url: '/release',
+                templateUrl: '/angular/templates/release/release-list.html',
                 controller: App.ReleaseController,
-                controllerAs: 'releaseController',
-                    params: {
-                      id: null
-                    }
+                controllerAs: 'releaseController'
+            })
+            .state ('release-create', {
+                url: '/release/create',
+                templateUrl: '/angular/templates/release/release-edit.html',
+                controller: App.ReleaseController,
+                controllerAs: 'releaseController'
+            })
+            .state ('release-view', {
+                url: '/release/:id',
+                templateUrl: '/angular/templates/release/release-view.html',
+                controller: App.ReleaseController,
+                controllerAs: 'releaseController'
+                // ,
+                //     params: {
+                //       id: null
+                //     }
+            })
+            .state ('release-edit', {
+                url: '/release/:id',
+                templateUrl: '/angular/templates/release/release-edit.html',
+                controller: App.ReleaseController,
+                controllerAs: 'releaseController'
+                // ,
+                //     params: {
+                //       id: null
+                //     }
             })
             .state ('track-create', {
                 url: '/track/create/:releaseId',
@@ -71,6 +88,12 @@ namespace App {
                 templateUrl: '/angular/templates/presenter/presenter-edit.html',
                 controller: App.PresenterController,
                 controllerAs: 'presenterController'
+            })
+            .state ('pdf', {
+                url: '/pdf',
+                templateUrl: '/angular/templates/playlist/playlist.html',
+                controller: App.PlaylistController,
+                controllerAs: 'playlistController'
             })
             ;
         }

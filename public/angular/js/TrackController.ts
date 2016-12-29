@@ -68,7 +68,6 @@ namespace App {
             // console.log ('updateID: ' + updateID);
 
             this.httpService ({
-                // Need to include media the path.
                 url: url,
                 method: method,
                 data: this.track
@@ -76,7 +75,7 @@ namespace App {
             .success ((response) => {
                 console.log ('Track was saved.');
                 // this.stateService.go ('release/' + releaseId passsed in with -1 trackId);
-                this.stateService.go ('media');
+                this.stateService.go ('release');
             })
             .error (() => {
             })

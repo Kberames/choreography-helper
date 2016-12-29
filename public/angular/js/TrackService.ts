@@ -55,7 +55,6 @@ namespace App {
             return promise;
         };
 
-
         public read (id) {
             let url = '/track';
 

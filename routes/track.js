@@ -132,7 +132,7 @@ var Track = require ('../model/track.js');
                     });
                 }
                 else {
-                    response.redirect ('/media');
+                    response.redirect ('/release');
                 }
             }
         });

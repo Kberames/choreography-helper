@@ -126,7 +126,7 @@ var Presenter = require ('../model/presenter.js');
                     });
                 }
                 else {
-                    response.redirect ('/media');
+                    response.redirect ('/release');
                 }
             }
         });

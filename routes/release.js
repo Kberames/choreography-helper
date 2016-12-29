@@ -7,8 +7,9 @@ var router = express.Router ();
 // Load the Schema objects for release,
 // track & presenter.
 var Release = require ('../model/release.js');
+
 var Track = require ('../model/track.js');
-var Presenter = require ('../model/presenter.js');
+// var Presenter = require ('../model/presenter.js');
 
 // Define routes.
 
@@ -33,7 +34,7 @@ var Presenter = require ('../model/presenter.js');
     });
 
     // Route to grab a specific release by it's id.
-    router.get ('/release/:id', function (request, response) {
+    router.get ('/:id', function (request, response) {
         // Grab the release id by the ':id' value in the url path.
         var releaseId = request.params.id;
         console.log('inside get release by id');
@@ -61,7 +62,7 @@ var Presenter = require ('../model/presenter.js');
     });
 
     // Create a route to handle updating an existing release.
-    router.put ('/release/:id', function (request, response) {
+    router.put ('/:id', function (request, response) {
         var releaseId = request.params.id;
 
         console.log('releaseId to update: ' + request.params.id);
@@ -88,6 +89,54 @@ var Presenter = require ('../model/presenter.js');
                 }
             }
         );
+    });
+
+    // Route to save release. (POST)
+    router.post ('/', function (request, response) {
+        // Create a new product from the data sent
+        // down by form.
+        var newRelease = Release (request.body);
+
+        console.log ("post release body: ", newRelease);
+
+        newRelease.save (function (error) {
+            //Check for errors.
+            if (error) {
+                var errorMessage = 'Unable to save the release.';
+                console.error ('*** ERROR: ' + errorMessage);
+                response.send (errorMessage);
+            }
+            else {
+                response.json ({
+                    message: 'Release was saved.'
+                });
+            }
+        });
+    });
+
+    //Create a route to delete a release by id.
+    router.get ('/:id/delete', function (request, response) {
+        console.log ('delete params: ', request.params);
+        var releaseId = request.params.id;
+
+
+        Release.findByIdAndRemove (releaseId, function (error, result) {
+            if (error) {
+                var errorMessage = 'Unable to delete release: ' + releaseId;
+                console.error ('***ERROR: ' + errorMessage);
+                response.send (errorMessage);
+            }
+            else {
+                if (request.sendJson) {
+                    response.json ({
+                        message: 'Release was deleted.'
+                    });
+                }
+                else {
+                    response.redirect ('/release');
+                }
+            }
+        });
     });
 
 // Route to test.

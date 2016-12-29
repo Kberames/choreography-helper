@@ -1,9 +1,8 @@
 namespace App {
-    export class MediaService {
+    export class ReleaseService {
         static $inject = ['$http'];
 
         private httpService;
-        public releaseList;
 
         constructor ($http: angular.IHttpService) {
             this.httpService = $http;
@@ -12,7 +11,7 @@ namespace App {
 
         public getReleaseList () {
             let promise = this.httpService ({
-                url: '/media',
+                url: '/release',
                 method: 'GET'
             });
 
@@ -22,7 +21,7 @@ namespace App {
         public getRelease (id) {
 
             let promise = this.httpService ({
-                url: '/media',
+                url: '/release',
                 method: 'GET',
                 params: {
                     id: id
@@ -32,8 +31,24 @@ namespace App {
             return promise;
         }
 
+        public delete (id, track) {
+            let promise = this.httpService ({
+                url: '/release/' + id + '/delete',
+                method: 'GET',
+                data: {
+                    id: id,
+                    track: track
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            return promise;
+        };
+
     }
 
     let app = angular.module ('App');
-    app.service ('MediaService', MediaService);
+    app.service ('ReleaseService', ReleaseService);
 }

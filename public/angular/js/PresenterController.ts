@@ -68,14 +68,13 @@ namespace App {
             // console.log ('updateID: ' + updateID);
 
             this.httpService ({
-                // Need to include media the path.
                 url: url,
                 method: method,
                 data: this.presenter
             })
             .success ((response) => {
                 console.log ('Presenter was saved.');
-                this.stateService.go ('media');
+                this.stateService.go ('release-view');
             })
             .error (() => {
             })

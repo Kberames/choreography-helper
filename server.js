@@ -158,8 +158,8 @@ var userRoutes = require ('./routes/user.js');
 server.use ('/user', userRoutes);
 
 // Connect the release routes.
-var mediaRoutes = require ('./routes/media.js');
-server.use ('/media', mediaRoutes);
+var releaseRoutes = require ('./routes/release.js');
+server.use ('/release', releaseRoutes);
 
 // Connect the track routes.
 var trackRoutes = require ('./routes/track.js');
@@ -168,6 +168,10 @@ server.use ('/track', trackRoutes);
 // Connect the presenter routes.
 var presenterRoutes = require ('./routes/presenter.js');
 server.use ('/presenter', presenterRoutes);
+
+// Connect the playlist routes.
+var playlistRoutes = require ('./routes/playlist.js');
+server.use ('/playlist', playlistRoutes);
 
 // Test a database query.
 server.get ('/test', function (request, response) {

@@ -57,7 +57,7 @@ router.post ('/login', function (request, response) {
                     response.redirect ('/chaz/#/');  // need to create super user route
                 }
                 else if (result.access == 'admin') {
-                    response.redirect ('/chaz/#/media');  // admin route
+                    response.redirect ('/chaz/#/release');  // admin route
                 }
                 else {
                     response.redirect ('/chaz/#/'); // need to create playlist route

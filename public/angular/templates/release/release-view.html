@@ -1,0 +1,43 @@
+<h2>{{ releaseController.release.program }}{{ releaseController.release.number }}</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div>
+            <strong>Quarter:</strong> {{releaseController.release.quarter}}
+        </div>
+        <div>
+            <strong>Year:</strong> {{releaseController.release.year}}
+        </div>
+        <div>
+            <strong>Sizzler:</strong> {{releaseController.release.sizzler}}
+        </div>
+    </div>
+</div>
+</br></br>
+
+<a class="btn btn-primary" ng-click="releaseController.goToPage('release-edit', {id: releaseController.release._id})">Edit</a>
+<a class="btn btn-warning" ng-click="releaseController.delete(releaseController.release._id, releaseController.release.tracks)">Delete</a>
+
+<h3>Presenters</h3>
+</br>
+<!-- Render presenters if any exist -->
+<div class="panel panel-default" ng-repeat="presenter in releaseController.release.presenters">
+    <div class="panel-body">
+        <a href="#" ng-click="releaseController.viewPresenter(presenter._id)">{{ presenter.name }}</a>
+        <p>{{ presenter.title }}</p>
+        <p>{{ presenter.location }}</p>
+        <p>{{ presenter.webPage }}</p>
+    </div>
+</div>
+
+<h3>Tracks</h3>
+</br>
+<!-- Render tracks if any exist -->
+<div class="panel panel-default" ng-repeat="track in releaseController.release.tracks">
+    <div class="panel-body">
+        <a href="#" ng-click="releaseController.viewTrack(track._id)">{{ track.type }}</a>
+        <p>{{ track.songTitle }}</p>
+        <p>{{ track.artist }}</p>
+        <p>{{ track.length }}</p>
+    </div>
+</div>
