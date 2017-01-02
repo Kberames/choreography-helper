@@ -1,127 +1,106 @@
 namespace App {
     export class PlaylistController {
-        static $inject = ['$http', '$state', '$scope'];
+        static $inject = ['$http', '$state', 'PlaylistService'];
 
         private httpService;
         private stateService;
-        private scopeService;
+        private playlistService;
 
-        public track;
+        public playlist;
+        public list;
 
         constructor (
             $http: angular.IHttpService,
             $state: angular.ui.IState,
-            $scope: angular.IScope
+            playlistService: App.PlaylistService
         ) {
             this.httpService = $http;
             this.stateService = $state;
-            this.scopeService = $scope;
+            this.playlistService = playlistService;
 
-            this.scopeService.pdfName = 'BODYPUMP88';
-            this.scopeService.pageNum = 12;
-            this.scopeService.pdfUrl = '/CHOREY/BODYPUMP88.pdf';
-            this.track = 1;
+            console.log ('*** parameters passed into playlist constructor: ', this.stateService.params);
 
-            this.scopeService.scroll = 0;
-            
-            // NOTE: Removed.  Causing errors.  Not needed.
-        // this.scopeService.loading = 'loading';
-
-            this.scopeService.getNavStyle = function (scroll) {
-                // DEBUG:
-                // console.log ('*** getNavStyle scroll: ' + scroll);
-
-              if(scroll > 100) return 'pdf-controls fixed';
-              else return 'pdf-controls';
-            }
-
-            this.scopeService.onError = function (error) {
-              console.log(error);
-            }
-
-            // NOTE: Removed.  Causing errors.  Not needed.
-            // this.scopeService.onLoad = function () {
-            //   this.scopeService.loading = '';
+            // if (this.stateService.params.id) {
+            //     this.read (this.stateService.params.id);
             // }
 
-            // DEBUG:
-            // console.log ('*** PLAYLIST ***');
         }
 
-        public goToPage (direction) {
-            // DEBUG:
-            // console.log ('goToPage direction: ' + direction);
-            // console.log ('goToPage current track: ' + this.track);
-
-            let newTrack = this.track;
-            if (direction == 'next' &&
-                this.track < 10) {
-                    newTrack++;
-                }
-            else if (direction == 'back' &&
-                this.track > 1) {
-                    newTrack--;
-                }
-
-            console.log ('goToPage new track: ' + newTrack);
-
-            if (newTrack != this.track) {
-                this.track = newTrack;
-
-                if (newTrack == 1) {
-                    this.scopeService.pdfName = 'BODYPUMP88';
-                    this.scopeService.pageNum = 12;
-                    this.scopeService.pdfUrl = '/CHOREY/BODYPUMP88.pdf';
-                }
-                else if (newTrack == 2) {
-                    this.scopeService.pdfName = 'BODYPUMP89';
-                    this.scopeService.pageNum = 12;
-                    this.scopeService.pdfUrl = '/CHOREY/BODYPUMP89.pdf';
-                }
-                else if (newTrack == 3) {
-                    this.scopeService.pdfName = 'BODYPUMP91';
-                    this.scopeService.pageNum = 16;
-                    this.scopeService.pdfUrl = '/CHOREY/BODYPUMP91.pdf';
-                }
-                else if (newTrack == 4) {
-                    this.scopeService.pdfName = 'BODYPUMP92';
-                    this.scopeService.pageNum = 18;
-                    this.scopeService.pdfUrl = '/CHOREY/BODYPUMP92.pdf';
-                }
-                else if (newTrack == 5) {
-                    this.scopeService.pdfName = 'BODYPUMP94';
-                    this.scopeService.pageNum = 22;
-                    this.scopeService.pdfUrl = '/CHOREY/BODYPUMP94.pdf';
-                }
-                else if (newTrack == 6) {
-                    this.scopeService.pdfName = 'BODYPUMP88';
-                    this.scopeService.pageNum = 22;
-                    this.scopeService.pdfUrl = '/CHOREY/BODYPUMP88.pdf';
-                }
-                else if (newTrack == 7) {
-                    this.scopeService.pdfName = 'BODYPUMP89';
-                    this.scopeService.pageNum = 22;
-                    this.scopeService.pdfUrl = '/CHOREY/BODYPUMP89.pdf';
-                }
-                else if (newTrack == 8) {
-                    this.scopeService.pdfName = 'BODYPUMP91';
-                    this.scopeService.pageNum = 26;
-                    this.scopeService.pdfUrl = '/CHOREY/BODYPUMP91.pdf';
-                }
-                else if (newTrack == 9) {
-                    this.scopeService.pdfName = 'BODYPUMP92';
-                    this.scopeService.pageNum = 32;
-                    this.scopeService.pdfUrl = '/CHOREY/BODYPUMP92.pdf';
-                }
-                else if (newTrack == 10) {
-                    this.scopeService.pdfName = 'BODYPUMP94';
-                    this.scopeService.pageNum = 34;
-                    this.scopeService.pdfUrl = '/CHOREY/BODYPUMP94.pdf';
-                }
-                // DEBUG:
-                // console.log ('pageNum: ' + this.scopeService.pageNum);
-            }
-        }
-
+        // public read (id) {
+        //     this.trackService.read (id)
+        //         .success ((response) => {
+        //             if (id) {
+        //                 this.track = response;
+        //             }
+        //             else {
+        //                 this.list = response;
+        //
+        //             }
+        //         })
+        //         .error ((response) => {
+        //             console.error ('Unable to read tracks: ', response);
+        //         });
+        // }
+        //
+        // public saveTrack () {
+        //
+        //     let updateID;
+        //     let method;
+        //     let url;
+        //
+        //     if (this.track._id) {
+        //         updateID = this.track._id;
+        //         method = 'PUT';
+        //         url = '/track/' + updateID;
+        //     }
+        //     else {
+        //         updateID = -1;
+        //         method = 'POST';
+        //         url = '/track';
+        //     }
+        //
+        //     // console.log ('updateID: ' + updateID);
+        //
+        //     this.httpService ({
+        //         url: url,
+        //         method: method,
+        //         data: this.track
+        //     })
+        //     .success ((response) => {
+        //         console.log ('Track was saved.');
+        //         // this.stateService.go ('release/' + releaseId passsed in with -1 trackId);
+        //         this.stateService.go ('release');
+        //     })
+        //     .error (() => {
+        //     })
+        //
+        // }
+        //
+        // public delete (id, release){
+        //     console.log ('Delete track id:', id);
+        //     console.log ('Delete track, release id:', release);
+        //     this.trackService.delete (id)
+        //         .success ((response) => {
+        //             this.goToPage ('release', {id: release});
+        //         })
+        //         .error ((response) => {
+        //             console.error ('Unable to delete the track: ', response);
+        //         })
+        //         ;
+        // }
+        //
+        // public viewPresenter (presenterId) {
+        //     console.log ('*** TrackController view presenter id: ' + presenterId);
+        //
+        //     this.stateService.go ('presenter-view',
+        //         {
+        //             id: presenterId
+        //         }
+        //     );
+        // }
+        //
+        // public goToPage (route, data){
+        //     this.stateService.go (route, data);
+        // }
     }
 }

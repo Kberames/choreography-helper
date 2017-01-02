@@ -82,16 +82,19 @@ namespace App {
         }
 
         public delete (id, release){
-            console.log ('Delete presenter id:', id);
-            console.log ('Delete presenter, release id:', release);
-            this.presenterService.delete (id)
-                .success ((response) => {
-                    this.goToPage ('release', {id: release});
-                })
-                .error ((response) => {
-                    console.error ('Unable to delete the presenter: ', response);
-                })
-                ;
+            if (confirm ('Are you sure you want to delete ' +
+            this.presenter.name + '?')) {
+                console.log ('Delete presenter id:', id);
+                console.log ('Delete presenter, release id:', release);
+                this.presenterService.delete (id)
+                    .success ((response) => {
+                        this.goToPage ('release', {id: release});
+                    })
+                    .error ((response) => {
+                        console.error ('Unable to delete the presenter: ', response);
+                    })
+                    ;
+                }
         }
 
         public goToPage (route, data){

@@ -13,6 +13,7 @@ var trackSchema = new Schema ({
     exercises : String,
     lyrics : String,
     searchTags : String,
+    pdfPage: Number,
 
     release: { type: Schema.Types.ObjectId, ref: 'Release'},
 

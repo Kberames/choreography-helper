@@ -83,16 +83,19 @@ namespace App {
         }
 
         public delete (id, release){
-            console.log ('Delete track id:', id);
-            console.log ('Delete track, release id:', release);
-            this.trackService.delete (id)
-                .success ((response) => {
-                    this.goToPage ('release', {id: release});
-                })
-                .error ((response) => {
-                    console.error ('Unable to delete the track: ', response);
-                })
-                ;
+            if (confirm ('Are you sure you want to delete ' +
+                this.track.songTitle + ' ' + this.track.type + '?')) {
+                console.log ('Delete track id:', id);
+                console.log ('Delete track, release id:', release);
+                this.trackService.delete (id)
+                    .success ((response) => {
+                        this.goToPage ('release', {id: release});
+                    })
+                    .error ((response) => {
+                        console.error ('Unable to delete the track: ', response);
+                    })
+                    ;
+            }
         }
 
         public viewPresenter (presenterId) {

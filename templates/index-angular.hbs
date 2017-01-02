@@ -30,24 +30,31 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" href="#">Choreography Helper</a>
+                <a class="navbar-brand" href="/">Choreography Helper</a>
               </div>
               <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
+                {{#if user}}
+                    <li><a href="/chaz/#/playlist">Playlist</a></li>
+                {{/if}}
                 <li><a href="/contact">Contact</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/user/logout">Logout</a></li>
-                <li><a href="/register">Register</a></li>
+                <li><a href="/about">About</a></li>
+                {{#if user}}
+                    <li><a href="/user/logout">Logout</a></li>
+                {{else}}
+                    <li><a href="/login">Login</a></li>
+                {{/if}}
+                <!-- <li><a href="/register">Register</a></li> -->
               </ul>
             </div>
         </nav>
 
-        <h1>Choreography Helper Angular</h1>
+        <!-- <h1>Choreography Helper Angular</h1> -->
 
         <!-- Set an area of the page where the partials
         html content will be inserted. -->
-        <div ui-view></div>
+        <div ui-view class="panel panel-default">
+        </div>
 
         <!-- Load all my app scripts -->
 
@@ -68,5 +75,6 @@
         <script src="/angular/js/PresenterController.js"></script>
         <script src="/angular/js/TrackController.js"></script>
         <script src="/angular/js/PlaylistController.js"></script>
+        <script src="/angular/js/PdfController.js"></script>
     </body>
 </html>

@@ -54,13 +54,13 @@ router.post ('/login', function (request, response) {
                 console.log ('This is the session data: ', request.session);
 
                 if (result.access == 'super') {
-                    response.redirect ('/chaz/#/');  // need to create super user route
+                    response.redirect ('/chaz/#/release');  // need to create super user route
                 }
                 else if (result.access == 'admin') {
                     response.redirect ('/chaz/#/release');  // admin route
                 }
                 else {
-                    response.redirect ('/chaz/#/'); // need to create playlist route
+                    response.redirect ('/chaz/#/playlist'); // need to create playlist route
                 }
 
             }
@@ -120,8 +120,7 @@ router.post ('/register', function (request, response) {
 
 // Handles GET  for logout route
 router.get ('/logout', function (request, response) {
-    // Add in when needed.
-    // request.session.destroy();
+    request.session.destroy();
     console.log ('session logout: ', request.session);
     response.redirect ('/user/login');
 });

@@ -89,11 +89,17 @@ namespace App {
                 controller: App.PresenterController,
                 controllerAs: 'presenterController'
             })
-            .state ('pdf', {
-                url: '/pdf',
+            .state ('playlist', {
+                url: '/playlist',
                 templateUrl: '/angular/templates/playlist/playlist.html',
                 controller: App.PlaylistController,
                 controllerAs: 'playlistController'
+            })
+            .state ('pdf', {
+                url: '/pdf',
+                templateUrl: '/angular/templates/playlist/pdf-view.html',
+                controller: App.PdfController,
+                controllerAs: 'pdfController'
             })
             ;
         }

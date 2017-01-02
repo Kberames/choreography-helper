@@ -178,28 +178,32 @@ namespace App {
         }
 
         public delete (id, track){
-            console.log ('Delete release id:', id);
-            console.log ('Delete release, track object:', track);
 
-            for (let i = 0; i < track.length; i++ ) {
-                console.log ('Delete release, track %s id: %s', i, track[i]._id);
-                this.trackService.delete (track[i]._id)
-                    .success ((response) => {
-                    })
-                    .error ((response) => {
-                        console.error ('Unable to delete the track: ', response);
-                    })
-                    ;
-            }
+            if (confirm ('Are you sure you want to delete ' +
+                this.release.program + this.release.number + '?')) {
+                    console.log ('Delete release id:', id);
+                    console.log ('Delete release, track object:', track);
 
-            this.releaseService.delete (id, track)
-                .success ((response) => {
-                    this.goToPage ('release', {});
-                })
-                .error ((response) => {
-                    console.error ('Unable to delete the release: ', response);
-                })
-                ;
+                    for (let i = 0; i < track.length; i++ ) {
+                        console.log ('Delete release, track %s id: %s', i, track[i]._id);
+                        this.trackService.delete (track[i]._id)
+                            .success ((response) => {
+                            })
+                            .error ((response) => {
+                                console.error ('Unable to delete the track: ', response);
+                            })
+                            ;
+                    }
+
+                    this.releaseService.delete (id, track)
+                        .success ((response) => {
+                            this.goToPage ('release', {});
+                        })
+                        .error ((response) => {
+                            console.error ('Unable to delete the release: ', response);
+                        })
+                        ;
+                }
         }
 
         public goToPage (route, data){
