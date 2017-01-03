@@ -46,11 +46,13 @@ router.post ('/login', function (request, response) {
                 // Save the user to the session
                 console.log ('This is the found user: ', result);
 
-                request.session.user = {  // save only the necessary user info
-                    username: result.username,
-                    email: result.email,
-                    access: result.access
-                };
+                // request.session.user = {  // save only the necessary user info
+                //     username: result.username,
+                //     email: result.email,
+                //     access: result.access
+                // };
+                request.session.user = result;
+                
                 console.log ('This is the session data: ', request.session);
 
                 if (result.access == 'super') {

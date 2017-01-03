@@ -1,7 +1,6 @@
 namespace App {
     let app = angular.module ('App', ['ui.router', 'ui.bootstrap', 'pdf']);
 
-
     app.config ([
         '$stateProvider',
 
@@ -91,15 +90,21 @@ namespace App {
             })
             .state ('playlist', {
                 url: '/playlist',
-                templateUrl: '/angular/templates/playlist/playlist.html',
+                templateUrl: '/angular/templates/playlist/playlist-list.html',
+                controller: App.PlaylistController,
+                controllerAs: 'playlistController'
+            })
+            .state ('playlist-view', {
+                url: '/playlist/:id',
+                templateUrl: '/angular/templates/playlist/playlist-view.html',
                 controller: App.PlaylistController,
                 controllerAs: 'playlistController'
             })
             .state ('pdf', {
-                url: '/pdf',
+                url: '/pdf/:id',
                 templateUrl: '/angular/templates/playlist/pdf-view.html',
-                controller: App.PdfController,
-                controllerAs: 'pdfController'
+                controller: App.PlaylistController,
+                controllerAs: 'playlistController'
             })
             ;
         }

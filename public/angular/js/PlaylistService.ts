@@ -15,66 +15,39 @@ namespace App {
             this.httpService = $httpService;
         }
 
-        // NOTE: POST /PlaylistService
-        public create (playlist) {
+        public getPlaylistList () {
             let promise = this.httpService ({
                 url: '/playlist',
-                method: 'POST',
-                data: playlist,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                method: 'GET'
             });
 
             return promise;
-        };
+        }
 
-        public update (id, playlist) {
+        public getPlaylist (id) {
+
             let promise = this.httpService ({
-                url: '/playlist/' + id,
-                method: 'PUT',
-                data: playlist,
-                headers: {
-                    'Content-Type': 'application/json'
+                url: '/playlist',
+                method: 'GET',
+                params: {
+                    id: id
                 }
             });
 
             return promise;
-        };
+        }
 
         public delete (id) {
             let promise = this.httpService ({
                 url: '/playlist/' + id + '/delete',
                 method: 'GET',
-                data: {},
+                data: {
+                    id: id
+                },
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
-
-            return promise;
-        };
-
-        public read (id) {
-            let url = '/playlist';
-
-
-            if (id) {
-                url += '/' + id;
-            }
-            // console.log ('*** prod service read');
-            let promise = this.httpService ({
-                url: url,
-                method: 'GET',
-                data: {},
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            console.log ('promise: ', promise);
-            console.log ('url: ', url);
-            console.log ('id: ', id);
 
             return promise;
         };

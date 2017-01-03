@@ -1,0 +1,25 @@
+<h2>{{ playlistController.playlist.name }}</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div>
+            <strong>Format:</strong> {{playlistController.playlist.format}}
+        </div>
+    </div>
+</div>
+<h3>Track(s)</h3>
+</br>
+<!-- Render presenters if any exist -->
+<div class="panel panel-default" ng-repeat="track in playlistController.playlist.tracks">
+    <div class="panel-body">
+        <p>{{ track.release.program }}{{ track.release.number }}</p>
+        <p>{{ track.type }}</p>
+        <p>{{ track.songTitle }}</p>
+    </div>
+</div>
+</br></br>
+</br></br>
+
+<a class="btn btn-primary" ng-click="playlistController.viewPDF(playlistController.playlist._id)">Open PDF</a>
+<a class="btn btn-primary" ng-click="playlistController.goToPage('playlist-edit', {id: playlistController.playlist._id})">Edit</a>
+<a class="btn btn-primary" ng-click="playlistController.delete(playlistController.playlist._id)">Delete</a>

@@ -15,7 +15,7 @@ var playlistSchema = new Schema ({
     user: { type: Schema.Types.ObjectId, ref: 'User'},
 
     // Need to know which release for each track.
-    releases: [{ type: Schema.Types.ObjectId, ref: 'Release'}]
+    tracks: [{ type: Schema.Types.ObjectId, ref: 'Track'}]
 
 });
 

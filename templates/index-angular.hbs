@@ -37,8 +37,8 @@
                 {{#if user}}
                     <li><a href="/chaz/#/playlist">Playlist</a></li>
                 {{/if}}
-                <li><a href="/contact">Contact</a></li>
                 <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
                 {{#if user}}
                     <li><a href="/user/logout">Logout</a></li>
                 {{else}}
@@ -71,10 +71,17 @@
         <script src="/angular/js/ReleaseService.js"></script>
         <script src="/angular/js/TrackService.js"></script>
         <script src="/angular/js/PresenterService.js"></script>
+        <script src="/angular/js/PlaylistService.js"></script>
         <script src="/angular/js/ReleaseController.js"></script>
         <script src="/angular/js/PresenterController.js"></script>
         <script src="/angular/js/TrackController.js"></script>
         <script src="/angular/js/PlaylistController.js"></script>
-        <script src="/angular/js/PdfController.js"></script>
+        <!-- <script src="/angular/js/PdfController.js"></script> -->
     </body>
+    <script>
+        $(".nav a").on("click", function(){
+           $(".nav").find(".active").removeClass("active");
+           $(this).parent().addClass("active");
+        });
+    </script>
 </html>
